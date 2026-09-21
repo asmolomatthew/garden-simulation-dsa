@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GardenSim - Data Structures Progress</title>
+
+  <!-- APPROVED STACK: Tailwind CDN + Lucide CDN + Pyodide + Vanilla JS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <header class="border-b border-slate-800 bg-slate-900/90">
+    <div class="mx-auto max-w-7xl px-6 py-6">
+      <div class="flex items-center gap-3">
+        <div class="rounded-xl bg-emerald-500/15 p-3 text-emerald-400">
+          <i data-lucide="sprout"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold">GardenSim</h1>
+          <p class="text-sm text-slate-400">Data Structures & Algorithms — Progress v0.1.0</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl space-y-6 px-6 py-6">
+    <div id="status" class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+      Loading Python runtime (Pyodide)...
+    </div>
+
+    <section class="grid gap-4 md:grid-cols-4">
+      <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+        <p class="text-xs uppercase tracking-wider text-slate-500">OOP</p>
+        <p class="mt-1 font-semibold">Plant / Garden classes</p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Stack</p>
+        <p class="mt-1 font-semibold">Action History</p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Queue</p>
+        <p class="mt-1 font-semibold">Weather Events</p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900 p-4">
+        <p class="text-xs uppercase tracking-wider text-slate-500">Tree</p>
+        <p class="mt-1 font-semibold">Plant Hierarchy</p>
+      </div>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-2">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h2 class="font-bold">Garden Grid</h2>
+            <p class="text-sm text-slate-400">2D list representation</p>
+          </div>
+          <i data-lucide="grid-2x2" class="text-emerald-400"></i>
+        </div>
+        <div id="gardenGrid" class="grid grid-cols-5 gap-2"></div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <button onclick="plant('Tomato')" class="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-500">Plant Tomato</button>
+          <button onclick="plant('Carrot')" class="rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold hover:bg-amber-500">Plant Carrot</button>
+          <button onclick="water()" class="rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold hover:bg-sky-500">Water Plot</button>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h2 class="font-bold">Action History — Stack</h2>
+            <p class="text-sm text-slate-400">LIFO: last action is undone first</p>
+          </div>
+          <i data-lucide="history" class="text-emerald-400"></i>
+        </div>
+        <div id="stack" class="space-y-2"></div>
+        <button onclick="undo()" class="mt-4 rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-800">Undo / Pop</button>
+      </div>
+
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h2 class="font-bold">Weather Events — Queue</h2>
+            <p class="text-sm text-slate-400">FIFO: first event is processed first</p>
+          </div>
+          <i data-lucide="cloud-sun" class="text-sky-400"></i>
+        </div>
+        <div id="queue" class="space-y-2"></div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button onclick="addWeather('Rain')" class="rounded-lg bg-sky-700 px-4 py-2 text-sm font-semibold hover:bg-sky-600">Add Rain</button>
+          <button onclick="addWeather('Heatwave')" class="rounded-lg bg-orange-700 px-4 py-2 text-sm font-semibold hover:bg-orange-600">Add Heatwave</button>
+          <button onclick="processWeather()" class="rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-800">Process First</button>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h2 class="font-bold">Plant Hierarchy — Tree</h2>
+            <p class="text-sm text-slate-400">Hierarchical categories + traversal</p>
+          </div>
+          <i data-lucide="git-branch" class="text-purple-400"></i>
+        </div>
+        <div id="tree" class="rounded-xl bg-slate-950 p-4 font-mono text-sm"></div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button onclick="traverse('preorder')" class="rounded-lg bg-purple-700 px-4 py-2 text-sm font-semibold hover:bg-purple-600">Preorder</button>
+          <button onclick="traverse('inorder')" class="rounded-lg bg-purple-700 px-4 py-2 text-sm font-semibold hover:bg-purple-600">Inorder</button>
+          <button onclick="traverse('postorder')" class="rounded-lg bg-purple-700 px-4 py-2 text-sm font-semibold hover:bg-purple-600">Postorder</button>
+        </div>
+        <p id="traversal" class="mt-3 text-sm text-slate-300"></p>
+      </div>
+    </section>
+
+    <section class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+      <h2 class="font-bold">Implementation Notes</h2>
+      <div class="mt-3 grid gap-3 md:grid-cols-2">
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <p class="font-semibold text-emerald-400">Python OOP</p>
+          <p class="mt-1 text-slate-400">Plant, Garden, ActionHistoryStack, WeatherQueue, TreeNode, and PlantHierarchy are Python classes.</p>
+        </div>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <p class="font-semibold text-emerald-400">Stack</p>
+          <p class="mt-1 text-slate-400">append() acts as push and pop() removes the newest action. Typical end operations are O(1).</p>
+        </div>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <p class="font-semibold text-sky-400">Queue</p>
+          <p class="mt-1 text-slate-400">A list with a head index is used for FIFO behavior without repeatedly shifting the whole list.</p>
+        </div>
+        <div class="rounded-xl bg-slate-950 p-4 text-sm">
+          <p class="font-semibold text-purple-400">Hierarchical Tree</p>
+          <p class="mt-1 text-slate-400">Plants are organized as Plants → Vegetables/Fruits → subcategories → plant names.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+  <script>
+    let pyodide;
+    let initialized = false;
+
+    const PYTHON_CODE = String.raw`
+import json
+
+class Plant:
+    def __init__(self, name, category, growth_days, value):
+        self.name = name
+        self.category = category
+        self.growth_days = growth_days
+        self.value = value
+
+    def info(self):
+        return f"{self.name} ({self.category})"
+
+class Garden:
+    def __init__(self, rows=4, cols=5):
+        self.rows = rows
+        self.cols = cols
+        self.grid = [[None for _ in range(cols)] for _ in range(rows)]
+        self.inventory = []
+
+    def plant_at(self, row, col, plant):
+        if 0 <= row < self.rows and 0 <= col < self.cols:
+            self.grid[row][col] = plant.name
+            self.inventory.append(plant)
+            return True
+        return False
+
+    def snapshot(self):
+        return self.grid
+
+class ActionHistoryStack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, action):
+        self.items.append(action)
+
+    def pop(self):
+        if self.items:
+            return self.items.pop()
+        return None
+
+    def peek(self):
+        return self.items[-1] if self.items else None
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+class WeatherQueue:
+    def __init__(self):
+        self.items = []
+        self.front = 0
+
+    def enqueue(self, event):
+        self.items.append(event)
+
+    def dequeue(self):
+        if self.front < len(self.items):
+            event = self.items[self.front]
+            self.front += 1
+            return event
+        return None
+
+    def values(self):
+        return self.items[self.front:]
+
+class TreeNode:
+    def __init__(self, name):
+        self.name = name
+        self.children = []
+
+    def add_child(self, node):
+        self.children.append(node)
+
+class PlantHierarchy:
+    def __init__(self):
+        self.root = TreeNode("Plants")
+        vegetables = TreeNode("Vegetables")
+        fruits = TreeNode("Fruits")
+        root_crops = TreeNode("Root Crops")
+        leafy = TreeNode("Leafy")
+        vegetables.add_child(root_crops)
+        vegetables.add_child(leafy)
+        root_crops.add_child(TreeNode("Carrot"))
+        root_crops.add_child(TreeNode("Potato"))
+        leafy.add_child(TreeNode("Lettuce"))
+        fruits.add_child(TreeNode("Tomato"))
+        fruits.add_child(TreeNode("Strawberry"))
+        self.root.add_child(vegetables)
+        self.root.add_child(fruits)
+
+    def preorder(self, node=None, result=None):
+        if result is None: result = []
+        if node is None: node = self.root
+        result.append(node.name)
+        for child in node.children:
+            self.preorder(child, result)
+        return result
+
+    def inorder(self, node=None, result=None):
+        # In a general hierarchical tree, this is a chosen left-to-right
+        # traversal convention rather than BST inorder.
+        if result is None: result = []
+        if node is None: node = self.root
+        if node.children:
+            self.inorder(node.children[0], result)
+        result.append(node.name)
+        for child in node.children[1:]:
+            self.inorder(child, result)
+        return result
+
+    def postorder(self, node=None, result=None):
+        if result is None: result = []
+        if node is None: node = self.root
+        for child in node.children:
+            self.postorder(child, result)
+        result.append(node.name)
+        return result
+
+garden = Garden()
+stack = ActionHistoryStack()
+weather = WeatherQueue()
+hierarchy = PlantHierarchy()
+
+plants = {
+    "Tomato": Plant("Tomato", "Fruit", 5, 50),
+    "Carrot": Plant("Carrot", "Root Crop", 4, 30),
+}
+
+def state():
+    return {
+        "grid": garden.snapshot(),
+        "stack": list(reversed(stack.items)),
+        "queue": weather.values(),
+        "tree": hierarchy.preorder(),
+        "inventory": [p.name for p in garden.inventory]
+    }
+
+def demo():
+    garden.plant_at(0, 0, plants["Tomato"])
+    garden.plant_at(1, 2, plants["Carrot"])
+    stack.push("Plant Tomato at (1,1)")
+    stack.push("Plant Carrot at (2,3)")
+    weather.enqueue("Rain")
+    weather.enqueue("Heatwave")
+    return state()
+
+json.dumps(demo())
+`;
+
+    async function init() {
+      try {
+        pyodide = await loadPyodide();
+        pyodide.runPython(PYTHON_CODE);
+        initialized = true;
+        document.getElementById("status").className =
+          "rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-200";
+        document.getElementById("status").textContent =
+          "Python runtime ready. GardenSim v0.1.0 is running in the browser through Pyodide.";
+        render(JSON.parse(pyodide.runPython("json.dumps(state())")));
+        lucide.createIcons();
+      } catch (err) {
+        document.getElementById("status").className =
+          "rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200";
+        document.getElementById("status").textContent = "Pyodide failed to load: " + err;
+      }
+    }
+
+    function requireReady() {
+      if (!initialized) {
+        alert("Please wait for the Python runtime to finish loading.");
+        return false;
+      }
+      return true;
+    }
+
+    function getState() {
+      return JSON.parse(pyodide.runPython("json.dumps(state())"));
+    }
+
+    function render(s) {
+      const grid = document.getElementById("gardenGrid");
+      grid.innerHTML = "";
+      s.grid.forEach((row, r) => {
+        row.forEach((cell, c) => {
+          const el = document.createElement("div");
+          el.className = "flex min-h-16 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 p-2 text-center text-xs";
+          el.textContent = cell ? "🌱 " + cell : `Plot ${r+1},${c+1}`;
+          grid.appendChild(el);
+        });
+      });
+
+      const stack = document.getElementById("stack");
+      stack.innerHTML = s.stack.length
+        ? s.stack.map((x, i) => `<div class="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-2 text-sm">${i === 0 ? "TOP → " : ""}${x}</div>`).join("")
+        : `<p class="text-sm text-slate-500">Stack is empty.</p>`;
+
+      const queue = document.getElementById("queue");
+      queue.innerHTML = s.queue.length
+        ? s.queue.map((x, i) => `<div class="rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-sm">${i === 0 ? "FRONT → " : ""}${x}</div>`).join("")
+        : `<p class="text-sm text-slate-500">Queue is empty.</p>`;
+
+      document.getElementById("tree").textContent =
+`Plants
+├── Vegetables
+│   ├── Root Crops
+│   │   ├── Carrot
+│   │   └── Potato
+│   └── Leafy
+│       ├── Lettuce
+│
+└── Fruits
+    ├── Tomato
+    └── Strawberry`;
+    }
+
+    function plant(name) {
+      if (!requireReady()) return;
+      const code = `
+plant = plants["${name}"]
+placed = False
+for r in range(garden.rows):
+    for c in range(garden.cols):
+        if garden.grid[r][c] is None and not placed:
+            garden.plant_at(r, c, plant)
+            stack.push("Plant ${name} at (" + str(r+1) + "," + str(c+1) + ")")
+            placed = True
+`;
+      pyodide.runPython(code);
+      render(getState());
+    }
+
+    function water() {
+      if (!requireReady()) return;
+      pyodide.runPython(`stack.push("Water garden plot")`);
+      render(getState());
+    }
+
+    function undo() {
+      if (!requireReady()) return;
+      const result = pyodide.runPython(`stack.pop()`);
+      alert(result ? "Popped: " + result : "Stack is empty.");
+      render(getState());
+    }
+
+    function addWeather(eventName) {
+      if (!requireReady()) return;
+      pyodide.runPython(`weather.enqueue("${eventName}")`);
+      render(getState());
+    }
+
+    function processWeather() {
+      if (!requireReady()) return;
+      const result = pyodide.runPython(`weather.dequeue()`);
+      alert(result ? "Processed first event: " + result : "Queue is empty.");
+      render(getState());
+    }
+
+    function traverse(type) {
+      if (!requireReady()) return;
+      const result = pyodide.runPython(`hierarchy.${type}()`);
+      document.getElementById("traversal").textContent =
+        type.charAt(0).toUpperCase() + type.slice(1) + ": " + result.join(" → ");
+    }
+
+    init();
+  </script>
+</body>
+</html>
