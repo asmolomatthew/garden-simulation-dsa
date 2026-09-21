@@ -1,0 +1,618 @@
+/* ============================================================
+   GARDENSIM
+   External Custom Stylesheet
+   Version: 0.1.0
+   ============================================================ */
+
+
+/* ============================================================
+   GENERAL
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.status-ready {
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  color: #a7f3d0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+
+.status-error {
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fecaca;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+
+/* ============================================================
+   FEATURE CARDS
+   ============================================================ */
+
+.feature-card {
+  border: 1px solid #1e293b;
+  background: #0f172a;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: #334155;
+}
+
+
+.feature-label {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+.feature-title {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+
+.panel {
+  border: 1px solid #1e293b;
+  background: #0f172a;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+
+.panel-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+
+.panel-subtitle {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn {
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+
+.btn:active {
+  transform: translateY(0);
+}
+
+
+.btn-green {
+  background: #059669;
+  color: white;
+}
+
+
+.btn-green:hover {
+  background: #10b981;
+}
+
+
+.btn-orange {
+  background: #d97706;
+  color: white;
+}
+
+
+.btn-orange:hover {
+  background: #f59e0b;
+}
+
+
+.btn-blue {
+  background: #0369a1;
+  color: white;
+}
+
+
+.btn-blue:hover {
+  background: #0284c7;
+}
+
+
+.btn-red {
+  background: #c2410c;
+  color: white;
+}
+
+
+.btn-red:hover {
+  background: #ea580c;
+}
+
+
+.btn-purple {
+  background: #7e22ce;
+  color: white;
+}
+
+
+.btn-purple:hover {
+  background: #9333ea;
+}
+
+
+.btn-outline {
+  border: 1px solid #334155;
+  background: transparent;
+  color: #e2e8f0;
+}
+
+
+.btn-outline:hover {
+  background: #1e293b;
+}
+
+
+/* ============================================================
+   GARDEN GRID
+   ============================================================ */
+
+.garden-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+
+.garden-plot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 4.25rem;
+
+  padding: 0.5rem;
+
+  border: 1px solid #334155;
+  border-radius: 0.75rem;
+
+  background: #1e293b;
+
+  color: #cbd5e1;
+
+  text-align: center;
+  font-size: 0.75rem;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.garden-plot:hover {
+  border-color: #10b981;
+  background: #243449;
+}
+
+
+/* ============================================================
+   STACK
+   ============================================================ */
+
+.stack-item {
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.6rem;
+
+  background: rgba(16, 185, 129, 0.08);
+
+  padding: 0.75rem;
+
+  color: #d1fae5;
+
+  font-size: 0.875rem;
+}
+
+
+.stack-item:first-child {
+  border-color: rgba(16, 185, 129, 0.45);
+  background: rgba(16, 185, 129, 0.14);
+}
+
+
+/* ============================================================
+   QUEUE
+   ============================================================ */
+
+.queue-item {
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 0.6rem;
+
+  background: rgba(14, 165, 233, 0.08);
+
+  padding: 0.75rem;
+
+  color: #bae6fd;
+
+  font-size: 0.875rem;
+}
+
+
+.queue-item:first-child {
+  border-color: rgba(14, 165, 233, 0.45);
+  background: rgba(14, 165, 233, 0.14);
+}
+
+
+/* ============================================================
+   EMPTY MESSAGE
+   ============================================================ */
+
+.empty-message {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+
+/* ============================================================
+   HIERARCHICAL TREE
+   ============================================================ */
+
+.tree-container {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border-radius: 0.9rem;
+
+  background: #020617;
+
+  padding: 1.5rem;
+
+  min-height: 280px;
+}
+
+
+.tree-wrapper {
+  min-width: 650px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.tree-level {
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 3rem;
+
+  width: 100%;
+}
+
+
+.tree-connector {
+  width: 2px;
+  height: 28px;
+
+  background: #475569;
+
+  margin: 0 auto;
+}
+
+
+.tree-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+
+/* ============================================================
+   TREE NODES
+   ============================================================ */
+
+.tree-node {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 110px;
+
+  padding: 0.65rem 1rem;
+
+  border-radius: 0.75rem;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.tree-node:hover {
+  transform: translateY(-2px);
+}
+
+
+.tree-node.root {
+  min-width: 130px;
+
+  border: 1px solid #10b981;
+
+  background: #064e3b;
+
+  color: #d1fae5;
+
+  font-size: 0.95rem;
+}
+
+
+.tree-node.category {
+  border: 1px solid #818cf8;
+
+  background: #312e81;
+
+  color: #e0e7ff;
+}
+
+
+.tree-node.subcategory {
+  border: 1px solid #22d3ee;
+
+  background: #164e63;
+
+  color: #cffafe;
+}
+
+
+.tree-node.plant {
+  border: 1px solid #f59e0b;
+
+  background: #422006;
+
+  color: #fef3c7;
+}
+
+
+/* ============================================================
+   TREE CHILDREN
+   ============================================================ */
+
+.tree-children {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 1.25rem;
+
+  margin-top: 28px;
+
+  padding-top: 0;
+}
+
+
+/* Vertical connector from parent */
+
+.tree-children::before {
+  content: "";
+
+  position: absolute;
+
+  top: -28px;
+  left: 50%;
+
+  width: 2px;
+  height: 28px;
+
+  background: #475569;
+}
+
+
+/* ============================================================
+   TREE LEGEND
+   ============================================================ */
+
+.tree-legend {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  margin-top: 2rem;
+}
+
+
+.tree-legend span {
+  border: 1px solid #1e293b;
+
+  border-radius: 999px;
+
+  background: #0f172a;
+
+  padding: 0.35rem 0.7rem;
+
+  color: #cbd5e1;
+
+  font-size: 0.7rem;
+}
+
+
+/* ============================================================
+   TRAVERSAL RESULT
+   ============================================================ */
+
+.traversal-result {
+  margin-top: 0.75rem;
+
+  min-height: 1.5rem;
+
+  color: #c4b5fd;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  font-size: 0.8rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   IMPLEMENTATION NOTES
+   ============================================================ */
+
+.implementation-card {
+  border-radius: 0.75rem;
+
+  background: #020617;
+
+  padding: 1rem;
+}
+
+
+.implementation-title {
+  margin: 0;
+
+  font-weight: 600;
+}
+
+
+.implementation-text {
+  margin-top: 0.35rem;
+
+  margin-bottom: 0;
+
+  color: #94a3b8;
+
+  font-size: 0.875rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .garden-grid {
+    grid-template-columns:
+      repeat(5, minmax(80px, 1fr));
+
+    overflow-x: auto;
+  }
+
+
+  .garden-plot {
+    min-height: 3.5rem;
+  }
+
+
+  .tree-container {
+    padding: 1rem;
+  }
+
+
+  .tree-level {
+    gap: 1.5rem;
+  }
+
+}
