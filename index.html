@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>GardenSim - Data Structures & Algorithms</title>
@@ -16,8 +16,201 @@
 
 <body class="min-h-screen bg-slate-950 text-slate-100">
 
+<!-- MAIN MENU -->
+  <section id="menuScreen" class="app-screen menu-screen active-screen">
+    <div class="menu-background">
+      <div class="menu-content">
+        <div class="menu-logo">🌱</div>
+        <p class="menu-kicker">SMART GARDEN GAME</p>
+        <h1 class="menu-title">GardenSim</h1>
+        <p class="menu-subtitle">Grow • Harvest • Manage • Learn</p>
+
+        <div class="menu-actions">
+          <button type="button" class="menu-button menu-button-primary" onclick="showScreen('gameScreen')">
+            <span>▶</span>
+            <span>PLAY GAME</span>
+          </button>
+
+          <button type="button" class="menu-button" onclick="showScreen('howToPlayScreen')">
+            <span>📖</span>
+            <span>HOW TO PLAY</span>
+          </button>
+
+          <button type="button" class="menu-button" onclick="showScreen('dsaLabScreen')">
+            <span>🧠</span>
+            <span>DSA LAB</span>
+          </button>
+
+          <button type="button" class="menu-button" onclick="showScreen('aboutScreen')">
+            <span>ℹ️</span>
+            <span>ABOUT</span>
+          </button>
+        </div>
+
+        <p class="menu-version">GardenSim v0.2.0 • Data Structures & Algorithms</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- HOW TO PLAY -->
+  <section id="howToPlayScreen" class="app-screen info-screen">
+    <div class="info-card">
+      <button type="button" class="screen-back" onclick="goBack()">← Back to Main Menu</button>
+      <div class="info-heading">
+        <span class="info-icon">📖</span>
+        <div>
+          <p class="eyebrow">BEGINNER GUIDE</p>
+          <h2>How to Play</h2>
+          <p>Build your farm step by step and turn your harvest into progress.</p>
+        </div>
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card"><span>🌱</span><strong>1. Plant</strong><p>Choose a seed and place it on an empty farm plot.</p></div>
+        <div class="how-card"><span>💧</span><strong>2. Water</strong><p>Water your crops so they can continue their growth cycle.</p></div>
+        <div class="how-card"><span>🌿</span><strong>3. Grow</strong><p>Watch the crop progress through its growth stages.</p></div>
+        <div class="how-card"><span>🧺</span><strong>4. Harvest</strong><p>Harvest crops when they are ready to collect their value.</p></div>
+        <div class="how-card"><span>🪙</span><strong>5. Earn</strong><p>Turn harvested crops into coins for your farm.</p></div>
+        <div class="how-card"><span>🛒</span><strong>6. Upgrade</strong><p>Buy more seeds and improve your farm as you progress.</p></div>
+      </div>
+
+      <div class="controls-note">
+        <strong>Coming into the full game:</strong> plot clicking, seed shop, inventory, crop growth, coins, tasks, weather, and farm expansion.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DSA LAB -->
+  <section id="dsaLabScreen" class="app-screen info-screen">
+    <div class="info-card dsa-lab-card">
+      <button type="button" class="screen-back" onclick="goBack()">← Back to Main Menu</button>
+
+      <div class="info-heading">
+        <span class="info-icon">🧠</span>
+        <div>
+          <p class="eyebrow">DATA STRUCTURES LAB</p>
+          <h2>DSA Lab</h2>
+          <p>Explore how each data structure solves a specific problem in GardenSim.</p>
+        </div>
+      </div>
+
+      <div class="dsa-lab-grid">
+        <div class="lab-card"><span>🟩</span><strong>Python OOP</strong><p>Plant, Garden, Stack, Queue, TreeNode, and game structures are modeled as Python classes.</p></div>
+        <div class="lab-card"><span>▦</span><strong>2D List</strong><p>The farm grid uses rows and columns to represent garden plots.</p></div>
+        <div class="lab-card"><span>📚</span><strong>Stack</strong><p>Action history follows LIFO so the latest action can be removed first.</p></div>
+        <div class="lab-card"><span>⏳</span><strong>Queue</strong><p>Weather events follow FIFO so the first event is processed first.</p></div>
+        <div class="lab-card"><span>🌳</span><strong>Tree</strong><p>Plant categories are organized hierarchically and can be traversed.</p></div>
+        <div class="lab-card lab-card-new"><span>🔎</span><strong>Binary Search Tree</strong><p>Stores the crop catalog in sorted order for efficient searching.</p></div>
+        <div class="lab-card lab-card-new"><span>🗺️</span><strong>Graph</strong><p>Models connected farm locations and finds a route between them.</p></div>
+      </div>
+
+      <div class="dsa-tools-grid">
+        <section class="dsa-tool-card bst-tool-card">
+          <div class="dsa-tool-heading">
+            <div>
+              <p class="eyebrow">TOPIC 6</p>
+              <h3>🔎 Binary Search Tree — Crop Search</h3>
+            </div>
+            <span class="dsa-tool-badge">BST</span>
+          </div>
+          <p>Search the ordered crop catalog using the BST implementation in Python.</p>
+
+          <div class="dsa-search-row">
+            <input id="bstSearchInput" class="dsa-input" type="text" placeholder="Try Carrot, Tomato, Lettuce..." onkeydown="if(event.key==='Enter') searchCropBST()">
+            <button type="button" class="btn btn-green" onclick="searchCropBST()">Search</button>
+          </div>
+
+          <div id="bstSearchResult" class="dsa-result-box">
+            🔎 Search for a crop to see the BST result.
+          </div>
+          <div id="bstInorder" class="dsa-mini-note">In-order catalog: Carrot → Lettuce → Strawberry → Tomato</div>
+        </section>
+
+        <section class="dsa-tool-card graph-tool-card">
+          <div class="dsa-tool-heading">
+            <div>
+              <p class="eyebrow">TOPIC 7</p>
+              <h3>🗺️ Graph — Farm Map</h3>
+            </div>
+            <span class="dsa-tool-badge graph-badge">GRAPH</span>
+          </div>
+          <p>Locations are vertices and paths are edges. Choose two locations to find a route.</p>
+
+          <div id="farmGraphVisual" class="farm-graph-visual">
+            <div class="graph-node farmhouse-node">🏠<span>Farmhouse</span></div>
+            <div class="graph-line line-farm-garden"></div>
+            <div class="graph-node garden-node">🌱<span>Garden</span></div>
+            <div class="graph-line line-garden-shop"></div>
+            <div class="graph-node shop-node">🛒<span>Seed Shop</span></div>
+            <div class="graph-line line-garden-market"></div>
+            <div class="graph-node market-node">🏪<span>Market</span></div>
+            <div class="graph-line line-market-lake"></div>
+            <div class="graph-node lake-node">💧<span>Lake</span></div>
+          </div>
+
+          <div class="graph-controls">
+            <select id="graphStart" class="dsa-select">
+              <option>Farmhouse</option>
+              <option>Garden</option>
+              <option>Seed Shop</option>
+              <option>Market</option>
+              <option>Lake</option>
+            </select>
+            <span>→</span>
+            <select id="graphTarget" class="dsa-select">
+              <option>Seed Shop</option>
+              <option>Farmhouse</option>
+              <option>Garden</option>
+              <option>Market</option>
+              <option>Lake</option>
+            </select>
+            <button type="button" class="btn btn-purple" onclick="findFarmPath()">Find Path</button>
+          </div>
+
+          <div id="graphPathResult" class="dsa-result-box">
+            🗺️ Choose two locations to find a route.
+          </div>
+        </section>
+      </div>
+
+      <div class="dsa-coverage-note">
+        <strong>7 DSA Topics in GardenSim</strong>
+        <span>OOP • 2D List • Stack • Queue • Tree • BST • Graph</span>
+      </div>
+
+      <button type="button" class="btn btn-green lab-open-btn" onclick="showScreen('dsaDemoScreen')">
+        Open Current DSA Demo →
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="aboutScreen" class="app-screen info-screen">
+    <div class="info-card about-card">
+      <button type="button" class="screen-back" onclick="goBack()">← Back to Main Menu</button>
+      <div class="about-logo">🌱</div>
+      <p class="eyebrow">ABOUT THE PROJECT</p>
+      <h2>GardenSim</h2>
+      <p class="about-lead">A browser-based smart garden game that combines a simple farming experience with practical Data Structures and Algorithms demonstrations.</p>
+
+      <div class="about-points">
+        <div><strong>🎮 Game Mode</strong><span>The user-facing farming experience.</span></div>
+        <div><strong>🧠 DSA Lab</strong><span>An educational view of the structures behind the game.</span></div>
+        <div><strong>🐍 Python + Pyodide</strong><span>Python logic runs directly in the browser.</span></div>
+        <div><strong>🌐 Web Interface</strong><span>HTML, CSS, and JavaScript handle the interface and interaction.</span></div>
+      </div>
+
+      <p class="about-footer">GardenSim v0.2.0 • Data Structures & Algorithms Final Project</p>
+    </div>
+  </section>
+
+
+
   <!-- HEADER -->
-  <header class="border-b border-slate-800 bg-slate-900/90">
+  <header id="gameHeader" class="border-b border-slate-800 bg-slate-900/90">
     <div class="mx-auto max-w-7xl px-6 py-6">
 
       <div class="flex items-center gap-3">
@@ -32,18 +225,236 @@
           </h1>
 
           <p class="text-sm text-slate-400">
-            Data Structures & Algorithms — Progress v0.1.0
+            Smart Garden Game — v0.2.0
           </p>
         </div>
 
       </div>
 
+      <button
+        type="button"
+        class="menu-back-btn"
+        onclick="showScreen('menuScreen')"
+      >
+        ☰ Menu
+      </button>
+
     </div>
   </header>
+  <!-- FARMING GAME -->
+  <main id="gameScreen" class="app-screen farm-game-screen">
+    <section class="game-hud">
+      <div class="hud-brand">
+        <button type="button" class="hud-icon-button" onclick="goBack()" aria-label="Back">←</button>
+        <div>
+          <p class="hud-kicker">GARDENSIM</p>
+          <h2>Sunny Meadow Farm</h2>
+        </div>
+      </div>
 
+      <div class="hud-center">
+        <div class="day-pill">☀️ DAY <strong id="gameDay">1</strong></div>
+        <div class="weather-pill">🌤️ Sunny</div>
+      </div>
 
-  <!-- MAIN -->
-  <main class="mx-auto max-w-7xl space-y-6 px-6 py-6">
+      <div class="hud-stats">
+        <div class="currency-pill">🪙 <strong id="gameCoins">100</strong></div>
+        <div class="level-pill">⭐ <strong id="gameLevel">1</strong></div>
+      </div>
+    </section>
+
+    <section class="game-layout">
+      <!-- LEFT: FARMER + TASKS -->
+      <aside class="game-side-panel left-game-panel">
+        <div class="player-card">
+          <div class="player-avatar">👨‍🌾</div>
+          <div>
+            <span class="tiny-label">FARMER</span>
+            <h3>Welcome!</h3>
+            <p>Let's grow something today.</p>
+          </div>
+        </div>
+
+        <div class="quest-card">
+          <div class="quest-heading">
+            <div>
+              <span class="tiny-label">TODAY'S TASKS</span>
+              <h3>Little Goals</h3>
+            </div>
+            <span class="quest-count">1/3</span>
+          </div>
+
+          <div class="quest-row complete">
+            <span class="quest-icon">✓</span>
+            <div><strong>Visit the farm</strong><small>Done</small></div>
+          </div>
+          <div class="quest-row">
+            <span class="quest-icon">🌱</span>
+            <div><strong>Plant one crop</strong><small>Reward: 5 XP</small></div>
+          </div>
+          <div class="quest-row">
+            <span class="quest-icon">💧</span>
+            <div><strong>Water one crop</strong><small>Reward: 5 XP</small></div>
+          </div>
+        </div>
+
+        <div class="bag-card">
+          <div class="card-heading">
+            <div>
+              <span class="tiny-label">YOUR BAG</span>
+              <h3>Inventory</h3>
+            </div>
+            <span class="heading-icon">🎒</span>
+          </div>
+          <div class="bag-grid">
+            <div class="bag-item"><span>🥕</span><strong>0</strong><small>Carrot</small></div>
+            <div class="bag-item"><span>🍅</span><strong>0</strong><small>Tomato</small></div>
+            <div class="bag-item"><span>🌱</span><strong id="seedCount">5</strong><small>Seeds</small></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CENTER: ACTUAL FARM -->
+      <section class="farm-world">
+        <div class="farm-title-row">
+          <div>
+            <span class="tiny-label">YOUR LAND</span>
+            <h2>🌾 My Little Farm</h2>
+            <p>Choose a plot, pick a seed, and start growing.</p>
+          </div>
+          <div id="selectedPlotLabel" class="selected-plot-pill">Pick a plot</div>
+        </div>
+
+        <div class="farm-map">
+          <div class="sky-glow"></div>
+          <div class="cloud cloud-one">☁️</div>
+          <div class="cloud cloud-two">☁️</div>
+
+          <div class="wood-fence fence-top"></div>
+          <div class="wood-fence fence-left"></div>
+
+          <div class="farmhouse">
+            <div class="house-smoke">☁️</div>
+            <div class="house-roof">🏠</div>
+            <span>Home</span>
+          </div>
+
+          <div class="pond">💧</div>
+          <div class="tree tree-left">🌳</div>
+          <div class="tree tree-right">🌳</div>
+          <div class="hay-bale">🌾</div>
+
+          <div class="soil-field">
+            <div id="gameGardenGrid" class="game-garden-grid" aria-label="Farm plots"></div>
+          </div>
+
+          <div class="path-stones">
+            <span>•</span><span>•</span><span>•</span><span>•</span><span>•</span>
+          </div>
+        </div>
+
+        <div class="farm-toolbar">
+          <button type="button" class="tool-button active" onclick="plantSelectedSeed()">
+            <span class="tool-icon">🌱</span>
+            <span><strong>Plant</strong><small>Grow a crop</small></span>
+          </button>
+          <button type="button" class="tool-button water-tool" onclick="waterSelectedPlot()">
+            <span class="tool-icon">💧</span>
+            <span><strong>Water</strong><small>Help it grow</small></span>
+          </button>
+          <button type="button" class="tool-button" onclick="harvestSelectedPlot()">
+            <span class="tool-icon">🧺</span>
+            <span><strong>Harvest</strong><small>Collect crops</small></span>
+          </button>
+        </div>
+
+        <div id="gameMessage" class="game-message">
+          🌱 Pick a seed from the shop, then choose an empty plot.
+        </div>
+      </section>
+
+      <!-- RIGHT: SHOP -->
+      <aside class="game-side-panel right-game-panel">
+        <div class="shop-card">
+          <div class="card-heading">
+            <div>
+              <span class="tiny-label">SEED SHOP</span>
+              <h3>What will you grow?</h3>
+            </div>
+            <span class="heading-icon">🛒</span>
+          </div>
+
+          <button type="button" class="seed-card selected" data-seed="Carrot" onclick="selectSeed('Carrot', 10, '🥕')">
+            <span class="seed-icon">🥕</span>
+            <span class="seed-info"><strong>Carrot</strong><small>10 coins • Root Crop</small></span>
+            <span class="seed-check">✓</span>
+          </button>
+
+          <button type="button" class="seed-card" data-seed="Tomato" onclick="selectSeed('Tomato', 15, '🍅')">
+            <span class="seed-icon">🍅</span>
+            <span class="seed-info"><strong>Tomato</strong><small>15 coins • Fruit</small></span>
+            <span class="seed-check">✓</span>
+          </button>
+
+          <div class="seed-card locked">
+            <span class="seed-icon">🥬</span>
+            <span class="seed-info"><strong>Lettuce</strong><small>Unlock at Level 2</small></span>
+            <span>🔒</span>
+          </div>
+
+          <div class="seed-card locked">
+            <span class="seed-icon">🍓</span>
+            <span class="seed-info"><strong>Strawberry</strong><small>Unlock at Level 3</small></span>
+            <span>🔒</span>
+          </div>
+
+          <div class="selected-seed-box">
+            <span>Selected seed</span>
+            <strong id="selectedSeedLabel">🥕 Carrot</strong>
+          </div>
+
+          <div class="game-bst-search">
+            <label for="gameCropSearch">🔎 Find a seed</label>
+            <div class="game-search-row">
+              <input id="gameCropSearch" type="text" placeholder="Search crop..." onkeydown="if(event.key==='Enter') searchCropForGame()">
+              <button type="button" onclick="searchCropForGame()">Go</button>
+            </div>
+            <div id="gameCropSearchResult">BST crop search ready.</div>
+          </div>
+        </div>
+
+        <div class="level-card">
+          <div class="level-card-top">
+            <span>⭐ FARM XP</span>
+            <strong>8 / 100</strong>
+          </div>
+          <div class="xp-track"><span></span></div>
+          <p>Plant and harvest crops to level up.</p>
+        </div>
+      </aside>
+    </section>
+
+    <div class="game-bottom-row">
+      <button type="button" class="soft-button day-advance-button" onclick="advanceGameDay()">☀️ Next Day</button>
+      <button type="button" class="soft-button" onclick="showScreen('howToPlayScreen')">📖 How to Play</button>
+      <button type="button" class="soft-button" onclick="showScreen('dsaLabScreen')">🧠 DSA Lab</button>
+      <button type="button" class="soft-button" onclick="showScreen('menuScreen')">☰ Main Menu</button>
+    </div>
+  </main>
+
+  <section id="dsaDemoScreen" class="app-screen dsa-demo-screen" mx-auto max-w-7xl space-y-6 px-6 py-6">
+
+    <!-- GAME MODE INTRO -->
+    <section class="game-mode-banner">
+      <div>
+        <p class="eyebrow">GAME MODE</p>
+        <h2>🧠 DSA Demonstration</h2>
+        <p>This is the preserved DSA prototype used to demonstrate the current Python data structures.</p>
+      </div>
+      <button type="button" class="btn btn-outline" onclick="goBack()">
+        ← Back
+      </button>
+    </section>
 
     <!-- STATUS -->
     <div
@@ -275,7 +686,14 @@
         <!-- TRAVERSAL BUTTONS -->
         <div class="mt-5 flex flex-wrap gap-2">
 
-          <button
+          <div id="traversalAnimationStatus" class="traversal-animation-status">
+          <span class="traversal-status-dot"></span>
+          <span id="traversalStatusText">Choose a traversal to watch the tree light up step by step.</span>
+        </div>
+
+        <div class="traversal-controls">
+
+<button
             onclick="traverse('preorder')"
             class="btn btn-purple"
           >
@@ -295,6 +713,7 @@
           >
             Postorder
           </button>
+        </div>
 
         </div>
 
@@ -384,1116 +803,33 @@
 
     </section>
 
-  </main>
+  </section>
 
-
-
-  <!-- PYODIDE -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
 
 
-  <script>
-
-    let pyodide;
-    let initialized = false;
-
-
-    /*
-      ============================================================
-      PYTHON DATA STRUCTURES
-      ============================================================
-    */
-
-    const PYTHON_CODE = String.raw`
-
-import json
-
-
-# ============================================================
-# PLANT CLASS
-# ============================================================
-
-class Plant:
-
-    def __init__(self, name, category, growth_days, value):
-
-        self.name = name
-        self.category = category
-        self.growth_days = growth_days
-        self.value = value
-
-
-    def info(self):
-
-        return f"{self.name} ({self.category})"
-
-
-
-# ============================================================
-# GARDEN CLASS
-# ============================================================
-
-class Garden:
-
-    def __init__(self, rows=4, cols=5):
-
-        self.rows = rows
-        self.cols = cols
-
-        # 2D LIST
-        self.grid = [
-            [None for _ in range(cols)]
-            for _ in range(rows)
-        ]
-
-        self.inventory = []
-
-
-    def plant_at(self, row, col, plant):
-
-        if 0 <= row < self.rows and 0 <= col < self.cols:
-
-            self.grid[row][col] = plant.name
-
-            self.inventory.append(plant)
-
-            return True
-
-        return False
-
-
-    def snapshot(self):
-
-        return self.grid
-
-
-
-# ============================================================
-# STACK
-# ============================================================
-
-class ActionHistoryStack:
-
-    def __init__(self):
-
-        self.items = []
-
-
-    def push(self, action):
-
-        self.items.append(action)
-
-
-    def pop(self):
-
-        if self.items:
-
-            return self.items.pop()
-
-        return None
-
-
-    def peek(self):
-
-        if self.items:
-
-            return self.items[-1]
-
-        return None
-
-
-    def is_empty(self):
-
-        return len(self.items) == 0
-
-
-
-# ============================================================
-# QUEUE
-# ============================================================
-
-class WeatherQueue:
-
-    def __init__(self):
-
-        self.items = []
-
-        self.front = 0
-
-
-    def enqueue(self, event):
-
-        self.items.append(event)
-
-
-    def dequeue(self):
-
-        if self.front < len(self.items):
-
-            event = self.items[self.front]
-
-            self.front += 1
-
-            return event
-
-        return None
-
-
-    def values(self):
-
-        return self.items[self.front:]
-
-
-
-# ============================================================
-# TREE NODE
-# ============================================================
-
-class TreeNode:
-
-    def __init__(self, name):
-
-        self.name = name
-
-        self.children = []
-
-
-    def add_child(self, node):
-
-        self.children.append(node)
-
-
-
-# ============================================================
-# HIERARCHICAL TREE
-# ============================================================
-
-class PlantHierarchy:
-
-    def __init__(self):
-
-        self.root = TreeNode("Plants")
-
-
-        # Categories
-        vegetables = TreeNode("Vegetables")
-        fruits = TreeNode("Fruits")
-
-
-        # Subcategories
-        root_crops = TreeNode("Root Crops")
-        leafy = TreeNode("Leafy")
-
-
-        vegetables.add_child(root_crops)
-        vegetables.add_child(leafy)
-
-
-        # Root Crops
-        root_crops.add_child(
-            TreeNode("Carrot")
-        )
-
-        root_crops.add_child(
-            TreeNode("Potato")
-        )
-
-
-        # Leafy
-        leafy.add_child(
-            TreeNode("Lettuce")
-        )
-
-
-        # Fruits
-        fruits.add_child(
-            TreeNode("Tomato")
-        )
-
-        fruits.add_child(
-            TreeNode("Strawberry")
-        )
-
-
-        # Root children
-        self.root.add_child(vegetables)
-        self.root.add_child(fruits)
-
-
-
-    # ========================================================
-    # PREORDER
-    # ========================================================
-
-    def preorder(self, node=None, result=None):
-
-        if result is None:
-
-            result = []
-
-
-        if node is None:
-
-            node = self.root
-
-
-        result.append(node.name)
-
-
-        for child in node.children:
-
-            self.preorder(child, result)
-
-
-        return result
-
-
-
-    # ========================================================
-    # INORDER-STYLE TRAVERSAL
-    # ========================================================
-
-    def inorder(self, node=None, result=None):
-
-        if result is None:
-
-            result = []
-
-
-        if node is None:
-
-            node = self.root
-
-
-        if node.children:
-
-            self.inorder(
-                node.children[0],
-                result
-            )
-
-
-        result.append(node.name)
-
-
-        for child in node.children[1:]:
-
-            self.inorder(
-                child,
-                result
-            )
-
-
-        return result
-
-
-
-    # ========================================================
-    # POSTORDER
-    # ========================================================
-
-    def postorder(self, node=None, result=None):
-
-        if result is None:
-
-            result = []
-
-
-        if node is None:
-
-            node = self.root
-
-
-        for child in node.children:
-
-            self.postorder(
-                child,
-                result
-            )
-
-
-        result.append(node.name)
-
-
-        return result
-
-
-
-# ============================================================
-# OBJECTS
-# ============================================================
-
-garden = Garden()
-
-stack = ActionHistoryStack()
-
-weather = WeatherQueue()
-
-hierarchy = PlantHierarchy()
-
-
-
-# ============================================================
-# PLANTS
-# ============================================================
-
-plants = {
-
-    "Tomato":
-        Plant(
-            "Tomato",
-            "Fruit",
-            5,
-            50
-        ),
-
-    "Carrot":
-        Plant(
-            "Carrot",
-            "Root Crop",
-            4,
-            30
-        )
-
-}
-
-
-
-# ============================================================
-# CURRENT STATE
-# ============================================================
-
-def state():
-
-    return {
-
-        "grid":
-            garden.snapshot(),
-
-        "stack":
-            list(
-                reversed(stack.items)
-            ),
-
-        "queue":
-            weather.values(),
-
-        "tree":
-            hierarchy.preorder(),
-
-        "inventory":
-            [
-                plant.name
-                for plant in garden.inventory
-            ]
-
-    }
-
-
-
-# ============================================================
-# INITIAL DEMO DATA
-# ============================================================
-
-def demo():
-
-    garden.plant_at(
-        0,
-        0,
-        plants["Tomato"]
-    )
-
-
-    garden.plant_at(
-        1,
-        2,
-        plants["Carrot"]
-    )
-
-
-    stack.push(
-        "Plant Tomato at (1,1)"
-    )
-
-
-    stack.push(
-        "Plant Carrot at (2,3)"
-    )
-
-
-    weather.enqueue("Rain")
-
-    weather.enqueue("Heatwave")
-
-
-    return state()
-
-
-json.dumps(demo())
-
-`;
-
-
-
-    /*
-      ============================================================
-      INITIALIZE PYODIDE
-      ============================================================
-    */
-
-    async function init() {
-
-      try {
-
-        pyodide = await loadPyodide();
-
-
-        pyodide.runPython(
-          PYTHON_CODE
-        );
-
-
-        initialized = true;
-
-
-        const status =
-          document.getElementById("status");
-
-
-        status.className =
-          "status-ready";
-
-
-        status.textContent =
-          "Python runtime ready. GardenSim v0.1.0 is running in the browser through Pyodide.";
-
-
-        render(
-          JSON.parse(
-            pyodide.runPython(
-              "json.dumps(state())"
-            )
-          )
-        );
-
-
-        lucide.createIcons();
-
-
-      } catch (error) {
-
-        const status =
-          document.getElementById("status");
-
-
-        status.className =
-          "status-error";
-
-
-        status.textContent =
-          "Pyodide failed to load: " + error;
-
-      }
-
-    }
-
-
-
-    /*
-      ============================================================
-      CHECK PYTHON
-      ============================================================
-    */
-
-    function requireReady() {
-
-      if (!initialized) {
-
-        alert(
-          "Please wait for the Python runtime to finish loading."
-        );
-
-        return false;
-
-      }
-
-
-      return true;
-
-    }
-
-
-
-    /*
-      ============================================================
-      GET CURRENT STATE
-      ============================================================
-    */
-
-    function getState() {
-
-      return JSON.parse(
-        pyodide.runPython(
-          "json.dumps(state())"
-        )
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      RENDER UI
-      ============================================================
-    */
-
-    function render(s) {
-
-
-      /*
-        --------------------------
-        GARDEN GRID
-        --------------------------
-      */
-
-      const grid =
-        document.getElementById(
-          "gardenGrid"
-        );
-
-
-      grid.innerHTML = "";
-
-
-      s.grid.forEach(
-        (row, r) => {
-
-          row.forEach(
-            (cell, c) => {
-
-              const element =
-                document.createElement(
-                  "div"
-                );
-
-
-              element.className =
-                "garden-plot";
-
-
-              element.textContent =
-                cell
-                  ? "🌱 " + cell
-                  : `Plot ${r + 1},${c + 1}`;
-
-
-              grid.appendChild(
-                element
-              );
-
-            }
-          );
-
-        }
-      );
-
-
-
-      /*
-        --------------------------
-        STACK
-        --------------------------
-      */
-
-      const stack =
-        document.getElementById(
-          "stack"
-        );
-
-
-      if (s.stack.length) {
-
-        stack.innerHTML =
-          s.stack
-            .map(
-              (item, index) => `
-
-                <div class="stack-item">
-
-                  ${
-                    index === 0
-                      ? "TOP → "
-                      : ""
-                  }
-
-                  ${item}
-
-                </div>
-
-              `
-            )
-            .join("");
-
-      } else {
-
-        stack.innerHTML = `
-
-          <p class="empty-message">
-            Stack is empty.
-          </p>
-
-        `;
-
-      }
-
-
-
-      /*
-        --------------------------
-        QUEUE
-        --------------------------
-      */
-
-      const queue =
-        document.getElementById(
-          "queue"
-        );
-
-
-      if (s.queue.length) {
-
-        queue.innerHTML =
-          s.queue
-            .map(
-              (item, index) => `
-
-                <div class="queue-item">
-
-                  ${
-                    index === 0
-                      ? "FRONT → "
-                      : ""
-                  }
-
-                  ${item}
-
-                </div>
-
-              `
-            )
-            .join("");
-
-      } else {
-
-        queue.innerHTML = `
-
-          <p class="empty-message">
-            Queue is empty.
-          </p>
-
-        `;
-
-      }
-
-
-
-      /*
-        --------------------------
-        HIERARCHICAL TREE
-        --------------------------
-      */
-
-      renderTree();
-
-    }
-
-
-
-    /*
-      ============================================================
-      RENDER TREE
-      ============================================================
-    */
-
-    function renderTree() {
-
-      const tree =
-        document.getElementById(
-          "tree"
-        );
-
-
-      tree.innerHTML = `
-
-        <div class="tree-wrapper">
-
-
-          <!-- ROOT -->
-          <div class="tree-level">
-
-            <div class="tree-node root">
-              🌱 Plants
-            </div>
-
-          </div>
-
-
-          <div class="tree-connector"></div>
-
-
-          <!-- CATEGORIES -->
-          <div class="tree-level">
-
-            <div class="tree-branch">
-
-              <div class="tree-node category">
-                🥕 Vegetables
-              </div>
-
-
-              <div class="tree-connector"></div>
-
-
-              <!-- VEGETABLE SUBCATEGORIES -->
-              <div class="tree-level">
-
-
-                <div class="tree-branch">
-
-                  <div class="tree-node subcategory">
-                    🥔 Root Crops
-                  </div>
-
-
-                  <div class="tree-children">
-
-                    <div class="tree-node plant">
-                      🥕 Carrot
-                    </div>
-
-                    <div class="tree-node plant">
-                      🥔 Potato
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="tree-branch">
-
-                  <div class="tree-node subcategory">
-                    🥬 Leafy
-                  </div>
-
-
-                  <div class="tree-children">
-
-                    <div class="tree-node plant">
-                      🥬 Lettuce
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- FRUITS -->
-            <div class="tree-branch">
-
-              <div class="tree-node category">
-                🍓 Fruits
-              </div>
-
-
-              <div class="tree-children">
-
-                <div class="tree-node plant">
-                  🍅 Tomato
-                </div>
-
-                <div class="tree-node plant">
-                  🍓 Strawberry
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <!-- LEGEND -->
-          <div class="tree-legend">
-
-            <span>
-              🌱 Root
-            </span>
-
-            <span>
-              📂 Category
-            </span>
-
-            <span>
-              🌿 Subcategory
-            </span>
-
-            <span>
-              🌾 Plant
-            </span>
-
-          </div>
-
-
-        </div>
-
-      `;
-
-    }
-
-
-
-    /*
-      ============================================================
-      PLANT
-      ============================================================
-    */
-
-    function plant(name) {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      const code = `
-
-plant = plants["${name}"]
-
-placed = False
-
-
-for r in range(garden.rows):
-
-    for c in range(garden.cols):
-
-        if garden.grid[r][c] is None and not placed:
-
-            garden.plant_at(
-                r,
-                c,
-                plant
-            )
-
-
-            stack.push(
-                "Plant ${name} at ("
-                + str(r + 1)
-                + ","
-                + str(c + 1)
-                + ")"
-            )
-
-
-            placed = True
-
-`;
-
-
-      pyodide.runPython(
-        code
-      );
-
-
-      render(
-        getState()
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      WATER
-      ============================================================
-    */
-
-    function water() {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      pyodide.runPython(
-        `stack.push("Water garden plot")`
-      );
-
-
-      render(
-        getState()
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      UNDO / POP
-      ============================================================
-    */
-
-    function undo() {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      const result =
-        pyodide.runPython(
-          `stack.pop()`
-        );
-
-
-      alert(
-        result
-          ? "Popped: " + result
-          : "Stack is empty."
-      );
-
-
-      render(
-        getState()
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      ADD WEATHER
-      ============================================================
-    */
-
-    function addWeather(eventName) {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      pyodide.runPython(
-        `weather.enqueue("${eventName}")`
-      );
-
-
-      render(
-        getState()
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      PROCESS WEATHER
-      ============================================================
-    */
-
-    function processWeather() {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      const result =
-        pyodide.runPython(
-          `weather.dequeue()`
-        );
-
-
-      alert(
-
-        result
-          ? "Processed first event: " + result
-          : "Queue is empty."
-
-      );
-
-
-      render(
-        getState()
-      );
-
-    }
-
-
-
-    /*
-      ============================================================
-      TREE TRAVERSAL
-      ============================================================
-    */
-
-    function traverse(type) {
-
-      if (!requireReady()) {
-
-        return;
-
-      }
-
-
-      const result =
-        pyodide.runPython(
-          `hierarchy.${type}()`
-        );
-
-
-      document.getElementById(
-        "traversal"
-      ).textContent =
-
-        type.charAt(0).toUpperCase()
-        + type.slice(1)
-        + ": "
-        + result.join(" → ");
-
-    }
-
-
-
-    /*
-      ============================================================
-      START APPLICATION
-      ============================================================
-    */
-
-    init();
-
-  </script>
+  <script src="script.js"></script>
+
+  <!-- NEW GAME / USERNAME MODAL -->
+  <div id="gameStartModal" class="game-modal hidden" role="dialog" aria-modal="true" aria-labelledby="gameStartTitle">
+    <div class="game-modal-backdrop"></div>
+    <div class="game-modal-card">
+      <div class="modal-sprout">🌱</div>
+      <span class="tiny-label">WELCOME TO GARDENSIM</span>
+      <h2 id="gameStartTitle">Let's start your farm!</h2>
+      <p>Enter your farmer name to begin with an empty farm.</p>
+
+      <label for="farmerNameInput">Farmer name</label>
+      <input id="farmerNameInput" type="text" maxlength="18" autocomplete="off"
+             placeholder="e.g. Matt" />
+
+      <button type="button" class="start-farm-button" onclick="startNewFarm()">
+        🌱 Start My Farm
+      </button>
+
+      <p id="startNameError" class="modal-error"></p>
+    </div>
+  </div>
 
 </body>
 </html>

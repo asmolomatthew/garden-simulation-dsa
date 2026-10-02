@@ -34,3 +34,70 @@ No backend, framework, or unapproved Python package is required.
 
 ## Important defense point
 The project is intentionally at v0.1.0. The remaining final-project topics will be integrated in later versions rather than adding unrelated code before the current progress submission.
+
+
+# 🌱 GardenSim
+
+### Smart Garden Game — Data Structures & Algorithms
+
+**GardenSim v0.2.0**
+
+GardenSim is an interactive browser-based farming simulation
+developed as a Data Structures and Algorithms project.
+
+The project combines a playable farming environment with practical
+implementations of Data Structures and Algorithms.
+
+Instead of presenting the structures only as isolated code examples,
+GardenSim connects each structure to an actual feature of the game.
+
+---
+
+## 🎮 Project Overview
+
+In GardenSim, the player manages a small farm by:
+
+- Planting crops
+- Watering crops
+- Growing crops
+- Harvesting crops
+- Earning coins
+- Managing inventory
+- Buying seeds
+- Completing farm tasks
+- Exploring connected farm locations
+
+The application also contains a dedicated **DSA Lab** where the
+implemented data structures can be demonstrated directly.
+
+---
+
+# 🧠 Data Structures & Algorithms
+
+GardenSim v0.2.0 currently demonstrates seven major areas:
+
+| DSA Topic | GardenSim Application |
+|---|---|
+| Python OOP | Game and DSA system classes |
+| 2D List / Array | Farm Grid |
+| Stack | Action History / Undo |
+| Queue | Weather Events |
+| Hierarchical Tree | Plant Classification |
+| Binary Search Tree | Crop / Seed Search |
+| Graph | Farm Map and Pathfinding |
+
+---
+
+## 1. Python OOP
+
+Python classes organize the major components of the system.
+
+Examples include:
+
+```text
+Plant
+Garden
+ActionHistoryStack
+WeatherQueue
+TreeNode
+PlantHierarchy

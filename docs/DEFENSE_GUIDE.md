@@ -44,3 +44,66 @@ Big O describes how an algorithm's running time or memory usage grows as the inp
 
 ## One-minute project explanation
 "GardenSim is a browser-based garden simulation designed to demonstrate Data Structures and Algorithms. Python classes model the garden and plants. A Stack stores action history for Undo using LIFO. A Queue stores weather events using FIFO. The garden itself uses a 2D list to represent plots. A hierarchical tree organizes plants into categories and supports traversal. The interface uses the instructor-approved HTML, Vanilla JavaScript, Tailwind CDN, Lucide CDN, and Pyodide stack."
+
+
+# GardenSim v0.2.0 — Defense Guide
+
+## 1. Project Overview
+
+### Possible Question:
+**What is GardenSim?**
+
+### Suggested Answer:
+GardenSim is a browser-based farming simulation developed for our
+Data Structures and Algorithms project.
+
+It combines a playable farming environment with actual data
+structures and algorithms so that the concepts are demonstrated
+through working features rather than isolated code examples.
+
+The current version is GardenSim v0.2.0.
+
+---
+
+# 2. Data Structures and Algorithms
+
+## 2.1 Python OOP
+
+### Possible Question:
+**Why did you use OOP?**
+
+### Suggested Answer:
+
+We used Python OOP to organize the different responsibilities of
+GardenSim into classes.
+
+Examples include:
+
+- Plant
+- Garden
+- ActionHistoryStack
+- WeatherQueue
+- TreeNode
+- PlantHierarchy
+
+This makes the system more modular because each class is responsible
+for a specific part of the application.
+
+---
+
+## 2.2 2D List / Array
+
+### Possible Question:
+**Where is the 2D List used?**
+
+### Suggested Answer:
+
+The 2D List represents the farm grid.
+
+The first index represents the row and the second index represents
+the column.
+
+Conceptually:
+
+```text
+garden.grid[row][column]

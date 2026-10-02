@@ -377,3 +377,244 @@ Stack Operation — Undo / Pop result.
 Queue Operation — queued weather events and FIFO processing.
 
 Hierarchical Tree — plant hierarchy and traversal controls.
+
+
+# Technical Journal — GardenSim v0.2.0
+
+## 1. Date
+October 02 2026
+
+## 2. Milestone
+
+GardenSim v0.2.0 expands the original DSA prototype into an
+interactive farming simulation while preserving the original
+Data Structures and Algorithms implementations.
+
+The major additions are:
+
+- Game Mode
+- Main Menu
+- DSA Lab
+- Binary Search Tree
+- Graph
+- Crop Search
+- Farm Map and Pathfinding
+- Farming mechanics
+- Interactive tree traversal animation
+- Watering and harvesting animations
+
+## 3. Architecture Update
+
+The project was reorganized to separate the major application
+components:
+
+- `index.html` — page structure and screens
+- `style.css` — custom interface styling
+- `script.js` — browser interaction and game control
+- `garden_simulation.py` — Python data structures and system logic
+
+Python continues to run in the browser through Pyodide.
+
+## 4. Module: Binary Search Tree
+
+### Implementation
+
+A Binary Search Tree was added to represent the crop catalog.
+
+The BST stores crop information such as:
+
+- Crop name
+- Category
+- Seed cost
+- Harvest value
+
+The crop-search feature allows the user to search for a crop
+through the Seed Shop and DSA Lab.
+
+### Purpose
+
+The BST demonstrates how ordered data can be searched by comparing
+the target value with the current node and moving to either the
+left or right subtree.
+
+### Complexity
+
+- Search: O(h)
+- Insert: O(h)
+- Space: O(n)
+
+where `h` is the tree height and `n` is the number of stored crops.
+
+### Screenshot
+
+*Insert screenshot of the BST Crop Search feature.*
+
+## 5. Module: Graph
+
+### Implementation
+
+A Graph was added to represent connected farm locations.
+
+Current locations include:
+
+- Farmhouse
+- Garden
+- Seed Shop
+- Market
+- Lake
+
+The graph uses an adjacency structure to represent connections
+between locations.
+
+### Pathfinding
+
+Breadth-First Search (BFS) is used to find a path between two
+connected locations.
+
+Example:
+
+Farmhouse → Garden → Market → Lake
+
+### Complexity
+
+- BFS: O(V + E)
+- Space: O(V)
+
+where `V` represents vertices and `E` represents edges.
+
+### Screenshot
+
+*Insert screenshot of the Farm Map and pathfinding result.*
+
+## 6. Module: Interactive Tree Traversal
+
+The existing Plant Hierarchy Tree was enhanced with a visual
+step-by-step traversal animation.
+
+The user can select:
+
+- Preorder
+- Inorder-style
+- Postorder
+
+When a traversal is selected, each node is highlighted sequentially
+according to the traversal order.
+
+The animation allows the user to visually understand the order in
+which nodes are visited.
+
+### Screenshot
+
+*Insert screenshot showing a traversal with highlighted nodes.*
+
+## 7. Module: Game Mode
+
+GardenSim was expanded from a DSA prototype into an interactive
+farming simulation.
+
+The game includes:
+
+- Player name
+- Farm plots
+- Seed selection
+- Planting
+- Watering
+- Crop growth
+- Harvesting
+- Coins
+- Inventory
+- Seed Shop
+- Tasks
+
+A new farm starts with empty plots, while the sample plants used
+for the DSA demonstration remain available in DSA Lab mode.
+
+## 8. Game Interaction Improvements
+
+Visual feedback was added to make the farming actions easier to
+understand.
+
+### Watering
+
+When a crop is watered, the interface displays a watering animation
+before continuing the crop-growth process.
+
+### Harvesting
+
+Harvesting includes a visual farmer animation.
+
+If a crop is harvested before reaching its required growth stage,
+the system displays a message indicating that the crop is not yet
+fully grown.
+
+## 9. Testing Performed
+
+The v0.2.0 build was tested through the browser.
+
+The following were verified:
+
+- Main Menu navigation
+- Browser Back navigation
+- New farm initialization
+- Empty farm state
+- Planting
+- Watering
+- Crop growth
+- Harvesting
+- Harvest restriction for immature crops
+- BST crop search
+- Graph pathfinding
+- Preorder traversal animation
+- Inorder-style traversal animation
+- Postorder traversal animation
+- DSA Lab functionality
+- Existing v0.1.0 DSA demonstrations
+
+## 10. AI Usage and Development Reflection
+
+AI was used as a development assistant during the expansion of
+GardenSim.
+
+Suggestions were reviewed, implemented selectively, tested, and
+corrected when the resulting behavior did not match the intended
+system.
+
+One important example was the watering animation. The animation
+initially disappeared because the farm grid was re-rendered after
+the animation was created. The implementation was adjusted so that
+the farm interface is rendered first and the watering animation is
+then attached to the resulting plot.
+
+Another issue occurred when the DSA demonstration state caused
+sample crops to appear when starting a new game. A separate game
+reset state was introduced so that Game Mode starts with an empty
+farm while DSA Demo retains its sample data.
+
+## 11. Current Version
+
+**GardenSim v0.2.0**
+
+The current version contains the original five DSA topics plus
+Binary Search Tree and Graph.
+
+## 12. Next Milestone
+
+Future development will focus on improving the overall game
+experience, including additional gameplay systems, balancing,
+visual polish, and further integration of Data Structures and
+Algorithms.
+
+## 13. Screenshots
+
+Attach evidence for:
+
+1. Main Menu
+2. Game Mode
+3. Empty New Farm
+4. Planting
+5. Watering Animation
+6. Harvest Animation
+7. BST Crop Search
+8. Graph Farm Map
+9. Tree Traversal Animation
+10. DSA Lab
